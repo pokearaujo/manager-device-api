@@ -32,17 +32,22 @@ class DeviceService {
       method: "GET",
     });
 
+    const device = result.result;
+    if (!device) {
+      return null;
+    }
+
     if (allData) {
-      return result.result;
+      return device;
     }
 
     return {
-      id: result.result.id,
-      name: result.result.name,
-      icon: result.result.icon,
-      online: result.result.online,
-      category: result.result.category,
-      status: result.result.status,
+      id: device.id,
+      name: device.name,
+      icon: device.icon,
+      online: device.online,
+      category: device.category,
+      status: device.status,
     };
   }
 

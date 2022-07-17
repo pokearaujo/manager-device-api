@@ -10,10 +10,10 @@ router.get("/", async (req, res) => {
   res.send(list);
 });
 
-router.post("/search", async (req, res) => {
+router.get("/search", async (req, res) => {
   const list = await deviceService.getList();
 
-  const name = req.body.name;
+  const name = req.query.name as string;
 
   const device = list.find((d) =>
     normalizeString(d.name)
